@@ -8,8 +8,11 @@
     <nav>
       <ul>
         <li>
-          <span @click="$router.push({ path: 'id-generator' })"
-            >Gerador de id
+          <span @click="$router.push({ path: '/id' })"> Gerador de id </span>
+        </li>
+        <li>
+          <span @click="$router.push({ path: '/person' })">
+            Gerador de pessoas
           </span>
         </li>
       </ul>
@@ -22,7 +25,6 @@
 <script setup lang="ts">
 import LogoIcon from "./components/icons/LogoIcon.vue";
 </script>
-
 
 <style>
 @import "@/assets/base.css";
@@ -48,7 +50,12 @@ header span {
   cursor: pointer;
 }
 
+header ul {
+  display: flex;
+}
+
 header ul li {
   list-style-type: none;
+  margin-right: 16px;
 }
 </style>

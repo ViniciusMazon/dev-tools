@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import IdGeneratorView from "../views/IdGeneratorView.vue";
+import HomeView from "@/views/HomeView.vue";
+import IdGeneratorView from "@/views/IdGeneratorView.vue";
+import PersonGeneratorView from "@/views/PersonGeneratorView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,7 +12,12 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/id-generator",
+      path: "/person",
+      name: "personGenerator",
+      component: PersonGeneratorView,
+    },
+    {
+      path: "/id",
       name: "idGenerator",
       component: IdGeneratorView,
     },
