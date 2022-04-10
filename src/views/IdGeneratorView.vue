@@ -15,6 +15,9 @@
 import { computed, reactive } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import ClipBoardIcon from '../components/icons/ClipBoardIcon.vue'
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
 
 const state = reactive({
   id: "",
@@ -29,6 +32,7 @@ function generateId() {
 
 function clipBoard() {
   navigator.clipboard.writeText(state.id);
+  toast.success("Copiado para área de transferência");
 }
 </script>
 
@@ -60,6 +64,7 @@ button {
   font-weight: bold;
   font-size: 18px;
   background-color: var(--vt-c-indigo);
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
