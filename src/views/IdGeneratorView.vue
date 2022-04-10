@@ -2,33 +2,34 @@
   <div class="container">
     <h1>Gerador de IDs</h1>
 
-    <span>{{ state.id }}</span>
+    <span v-show="isIdGenerated" @click="clipBoard">
+      {{ state.id }}
+      <clip-board-icon />
+    </span>
 
     <button @click="generateId">Gerar</button>
   </div>
 </template>
 
-<script lang="ts">
-import { reactive } from "vue";
+<script setup lang="ts">
+import { computed, reactive } from "vue";
 import { v4 as uuidv4 } from "uuid";
+import ClipBoardIcon from '../components/icons/ClipBoardIcon.vue'
 
-export default {
-  setup() {
-    const state = reactive({
-      id: "",
-    });
+const state = reactive({
+  id: "",
+});
 
-    function generateId() {
-      const id = uuidv4().split("-").join('');
-      state.id = id;
-    }
+const isIdGenerated = computed(() => state.id !== '')
 
-    return {
-      state,
-      generateId,
-    };
-  },
-};
+function generateId() {
+  const id = uuidv4().split("-").join("");
+  state.id = id;
+}
+
+function clipBoard() {
+  navigator.clipboard.writeText(state.id);
+}
 </script>
 
 <style scoped>
@@ -49,6 +50,7 @@ export default {
 .container span {
   font-size: 30px;
   padding: 40px;
+  cursor: pointer;
 }
 
 button {
