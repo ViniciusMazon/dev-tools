@@ -1,8 +1,6 @@
 <template>
   <div class="container">
     <h1>Gerador de Pessoas</h1>
-    <button @click="generatePerson">Gerar</button>
-
     <div>
       <div class="input-group">
         <label for="avatar">Avatar</label>
@@ -24,11 +22,12 @@
         <input name="phone" type="text" :value="state.phone" readonly />
       </div>
     </div>
+    <button @click="generatePerson">Gerar</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
 import {faker} from '@faker-js/faker'
 
 var state = reactive({
@@ -37,6 +36,10 @@ var state = reactive({
   phone: "",
   avatar: "",
 });
+
+onMounted(() => {
+  generatePerson()
+})
 
 function generatePerson() {
   state.name = faker.name.findName();
@@ -100,6 +103,7 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 32px;
 }
 
 button:hover {

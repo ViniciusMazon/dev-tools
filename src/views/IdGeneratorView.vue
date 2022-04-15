@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from "vue";
+import { computed, reactive, onMounted } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import ClipBoardIcon from '../components/icons/ClipBoardIcon.vue'
 import { useToast } from 'vue-toastification'
@@ -22,6 +22,10 @@ const toast = useToast()
 const state = reactive({
   id: "",
 });
+
+onMounted(() => {
+  generateId()
+})
 
 const isIdGenerated = computed(() => state.id !== '')
 
@@ -55,6 +59,10 @@ function clipBoard() {
   font-size: 30px;
   padding: 40px;
   cursor: pointer;
+}
+
+.container span > svg {
+  margin-left: 16px;
 }
 
 button {

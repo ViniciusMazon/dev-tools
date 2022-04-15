@@ -33,7 +33,6 @@ import LogoIcon from "./components/icons/LogoIcon.vue";
   height: 100vh;
   margin: 0 auto;
   padding: 2rem;
-
   font-weight: normal;
 }
 
